@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>About Me</h1>
+<style>
+
+.pdf-viewer {
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    padding: 5px;
+    /* background-color: #f9f9f9; */
+}
+
+
+</style>
+<p>I am a Master's student at IISc specializing in applying machine learning and deep learning to biological research. My passion lies in solving complex problems with AI-driven solutions.</p>
+
+<h2>View My Resume</h2>
+<!-- PDF Viewer -->
+<div class="pdf-viewer" style="text-align: center; margin-top: 20px;">
+    <iframe src="{{ url_for('static', filename='Manikumar_CV.pdf') }}" width="90%" height="600px" style="border: none;">
+        Your browser does not support PDFs. Please download the file to view it.
+    </iframe>
+</div>
+
+<!-- Download Button -->
+<div style="text-align: center; margin-top: 10px;">
+    <a href="{{ url_for('static', filename='Manikumar_CV.pdf') }}" download="Manikumar_CV.pdf" class="btn btn-primary">Download Resume</a>
+</div>
+{% endblock %}

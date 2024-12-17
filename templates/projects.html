@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card h-100 d-flex flex-column">
+        <img src="./static/images/Yeast.gif" class="card-img-top" alt="Yeast knowledge Graph">
+        <div class="card-body">
+          <h5 class="card-title">Yeast knowledge Graph</h5>
+          <p class="card-text">YeastConnetome is a database that contains over 3432749 entities with several hundred thousand interaction types between the said amount of entities. These entities and interactions were obtained from having GPT process over 84427 paper abstracts from various popular scientific journals.</p>
+            <p class="card-text">
+                <strong>Tools & Technologies:</strong> Python, OpenAI API, NLP, Prompt Engineering.
+            </p>
+            <a href="https://yeast.connectome.tools/" target="_blank" class="btn btn-primary">Explore the Project</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 d-flex flex-column">
+        <img src="./static/images/meesho.gif" class="card-img-top" alt="visual taxomony code">
+        <div class="card-body">
+          <h5 class="card-title">Visual Taxonomy Challenge</h5>
+          <p class="card-text">Participated in a Kaggle competition to predict product attributes like color, pattern, and sleeve 
+            length from images. Implemented an EfficientNet-based model with custom augmentations to improve 
+            accuracy and generalization, achieving a competitive F1 score of <strong>0.735</strong>.  </p>
+            <p class="card-text" >
+                <strong>Tools & Technologies:</strong> CNN, EfficientNet, PyTorch, Vision Transformers, Data Augmentation.
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 d-flex flex-column">
+        <img src="./static/images/algobot.gif" class="card-img-top" alt="Algo Trading">
+        <div class="card-body">
+          <h5 class="card-title">Algo Intraday Options Trading</h5>
+          <p class="card-text">Developed and deployed an automated intraday trading bot using Python and the Upstox API. 
+            The bot utilizes a 14-day moving average strategy for trade decision-making, incorporating 
+            real-time data for execution and backtesting for validation.</p>
+            <p class="card-text">
+                <strong>Tools & Technologies:</strong> Python, Upstox API, Backtesting.py.
+            </p>
+            <a href="https://github.com/Manikumarksr/Algo-trading-bot" target="_blank" class="btn btn-primary">View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 d-flex flex-column">
+        <img src="./static/images/obj_detector.gif" class="card-img-top" alt="Object Detector">
+        <div class="card-body">
+          <h5 class="card-title">Object Detector for the Visually Impaired</h5>
+          <p class="card-text">Designed and prototyped a portable object detection system to assist visually impaired individuals. 
+            The device uses an ESP32-CAM and an ultrasound sensor to detect objects and measure their distance. 
+            A mobile app provides voice-based feedback, helping users navigate safely.</p>
+            <p class="card-title">
+                <strong>Tools & Technologies:</strong> Arduino, ESP32 CAM, OpenCV, Kivy.
+            </p>
+            <div class="d-grid gap-2 d-md-flex">
+            <a href="https://youtu.be/Yn279qkG89E?si=xWCT0JY0qzn69eId" target="_blank" class="btn btn-primary">Explore the Project</a>
+            <a href="https://github.com/Manikumarksr/Object-detector-Arduino" target="_blank" class="btn btn-primary">View Code</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <div class="col">
+    <div class="card h-100 d-flex flex-column">
+      <img src="./static/images/segmentation.gif" class="card-img-top" alt="code">
+      <div class="card-body">
+        <h5 class="card-title">Image Classification and Segmentation using ResNet and U-Net</h5>
+        <p class="card-text">Developed a deep learning-based pipeline for binary image classification and semantic segmentation tasks, 
+          leveraging the ResNet architecture for feature extraction and the U-Net model for segmentation. The project demonstrated expertise in training and fine-tuning
+           convolutional neural networks to achieve high accuracy in identifying and segmenting specific features in images. 
+           This work involved preprocessing custom datasets, implementing robust training pipelines in Tensorflow, and 
+           evaluating model performance with metrics such as accuracy and Dice score. The project highlights proficiency in both classification and segmentation tasks to solve real-world image analysis challenges.</p>
+          <p class="card-title">
+              <strong>Tools & Technologies:</strong> Python, Tensorflow, ResNet, Dice Score Evaluation Metrics.
+          </p>
+          <a href="https://github.com/Manikumarksr/Image-classification-and-segmentation---ResNet-UNet" target="_blank" class="btn btn-primary">View Code</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 d-flex flex-column">
+      <img src="./static/images/lstm.gif" class="card-img-top" alt="lstm">
+      <div class="card-body">
+        <h5 class="card-title">LSTM-Based Stock Price Prediction</h5>
+        <p class="card-text">Designed and implemented a deep learning model to predict stock prices using Long Short-Term Memory (LSTM) networks. The project focused on analyzing historical stock data and capturing temporal dependencies to forecast future price trends. 
+          Employed preprocessing techniques for feature extraction and scaling, followed by the design of an LSTM-based architecture optimized for sequential data. 
+          The model was evaluated on real-world datasets, achieving promising accuracy in predicting price movements, demonstrating the ability to use deep learning 
+          for financial time series forecasting.</p>
+          <p class="card-title">
+              <strong>Tools & Technologies:</strong> Python, TensorFlow, LSTM, Pandas, NumPy, Matplotlib.
+          </p>
+          <a href="https://github.com/Manikumarksr/LSTM_Stock_prediction" target="_blank" class="btn btn-primary">View Code</a>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="col">
+    <div class="card h-100 d-flex flex-column">
+      <img src="./static/images/rag.gif" class="card-img-top" alt="lstm">
+      <div class="card-body">
+        <h5 class="card-title"> Retrieval-Augmented Generation (RAG) for Knowledge Retrieval</h5>
+        <p class="card-text">Built a Retrieval-Augmented Generation (RAG) pipeline to enhance contextual knowledge retrieval and generation, 
+          leveraging the Quadrant vector database for efficient document indexing and retrieval. Integrated a locally running Llama.cpp model to enable lightweight 
+          and high-performance generative capabilities. The system was designed to process and query thesis documents, enabling interactive and accurate responses 
+          based on academic content. This project highlights expertise in combining vector databases with state-of-the-art language models and demonstrates 
+          proficiency in optimizing NLP systems for local and scalable deployment.</p>
+          <p class="card-title">
+              <strong>Tools & Technologies:</strong> Python, Quadrant Vector Database, Llama.cpp, PyTorch, RAG, NLP.
+            </p>
+          <a href="https://github.com/Manikumarksr/RAG-main" target="_blank" class="btn btn-primary">View Code</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 d-flex flex-column">
+      <img src="./static/images/eqtls.gif" class="card-img-top" alt="lstm">
+      <div class="card-body">
+        <h5 class="card-title">  Computational Genomics Project | CBRAIN Internship</h5>
+        <p class="card-text">Conducted an intensive research internship at the Centre for Brain Research (CBRAIN), IISc, under the guidance of Prof. Shweta Ramdas. 
+          The project focused on the discovery of novel expression quantitative trait loci (eQTLs) by analyzing gene expression data from smokers and non-smokers. 
+          Utilized a combination of Linux, Python, and specialized bioinformatics tools like qtltools and bcftools to process and analyze complex genetic datasets, 
+          identifying significant eQTLs. This work demonstrated expertise in computational genomics, data analysis, and leveraging bioinformatics tools to address 
+          significant research questions.</p>
+          <p class="card-title">
+              <strong>Tools & Technologies:</strong> Linux, Python, qtltools, bcftools, Bioinformatics, Computational Genomics.
+            </p>
+          <a href="https://github.com/Manikumarksr/Object-detector-Arduino" target="_blank" class="btn btn-primary">View Code</a>
+      </div>
+  </div>
+  </div>
+
+  </div>
+
+
+{% endblock %}

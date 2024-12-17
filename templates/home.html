@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="home-page">
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Hello!</h1>
+            <h2 class="hero-subtitle">I'm <span class="highlight">Mani Kumar R</span></h2>
+            <p class="hero-description">Master’s Student at IISc | Computational Biology | AI and Machine Learning Enthusiast</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/Manikumarksr" target="_blank" class="btn btn-highlight">GitHub</a>
+                <a href="/projects" class="btn btn-dark">My Works</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/mani_pic.png') }}" alt="Mani Kumar R" />
+        </div>
+    </header>
+</div>
+
+<style>
+    /* Hero Section Styles */
+    .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px;
+        background-color: #000;
+        color: #fff;
+        height: 100vh;
+    }
+    .hero-title {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #ffd700;
+    }
+    .hero-subtitle {
+        font-size: 3rem;
+        margin: 20px 0;
+    }
+    .hero-description {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    .highlight {
+        color: #ffd700;
+    }
+    .hero-buttons a {
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .btn-highlight {
+        background-color: #ffd700;
+        color: #000;
+    }
+    .btn-dark {
+        background-color: #444;
+        color: #fff;
+    }
+    .btn-highlight:hover,
+    .btn-dark:hover {
+        opacity: 0.8;
+    }
+    .hero-image img {
+        width: 400px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
