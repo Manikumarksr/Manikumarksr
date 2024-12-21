@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Mani Kumar</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/pie-chart.png') }}">
+    <!-- <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/briefcase.png') }}"> -->
+
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
@@ -69,7 +77,8 @@
         .chat-body .message {
             margin-bottom: 10px;
             line-height: 1.4;
-            max-width: 80%;
+            max-width: 50%;
+            overflow-y: auto;
             padding: 8px 12px;
             border-radius: 12px;
         }
@@ -118,10 +127,19 @@
         .chat-footer button:hover {
             background: #0056b3;
         }
+
+        .popover {
+            max-width: 250px; /* Set the maximum width for the popover */
+            width: 300px;     /* Set a fixed width for the popover */
+            height: 50px;    /* Set a fixed height for the popover */
+            /* overflow-y: auto; Enable vertical scrolling if content exceeds height */
+            /* word-wrap: break-word; Wrap long text to fit within the width */
+        }
+
     </style>
 
 </head>
-<body>
+<body>  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-underline nav" >
         <div class="container">
             <a class="navbar-brand" href="/">Mani Kumar R</a>
@@ -132,6 +150,9 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pubs">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/certs">Certifications</a></li>
                     <li class="nav-item"><a class="nav-link" href="/resume">Resume</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                 </ul>
@@ -140,7 +161,7 @@
     </nav>
 
     <!-- Floating Chat Icon -->
-    <div class="chat-icon" id="chat-icon">
+    <div class="chat-icon" id="chat-icon" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="">
         <i class="bi bi-chat-dots"></i>
     </div>
 
@@ -179,18 +200,92 @@
         const chatBox = document.getElementById('chat-box');
         const userInput = document.getElementById('user-input');
         const sendButton = document.getElementById('send-button');
+        let stream = true;
+
 
         // Toggle chat window visibility
         chatIcon.addEventListener('click', () => {
+            event.stopPropagation();
             chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+            stream = false;
+            disposeAllPopovers();
         });
+
+                // Close the chat window when clicking outside of it
+        document.addEventListener('click', (event) => {
+            // Check if the click was outside the chat window and chat icon
+            if (!chatWindow.contains(event.target) && !chatIcon.contains(event.target)) {
+                chatWindow.style.display = 'none';
+            }
+        });
+
+
+        let list = [];
+
+        const disposeAllPopovers = () => {
+            list.forEach(popover => popover.dispose());
+            list = [];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the chat icon element
+            const chatIcon = document.getElementById('chat-icon');
+
+            // Initialize the popover manually
+            let popoverInstance = new bootstrap.Popover(chatIcon, {
+                trigger: 'manual', // Manually control the popover
+                html: true, // Enable HTML content
+                content: '' // Empty initial content
+            });
+
+            list.push(popoverInstance);
+
+            // Function to dynamically update and show the popover
+            const updatePopoverContent = (content) => {
+                chatIcon.setAttribute('data-bs-content', content);
+            
+                // Reinitialize the popover with the new content
+
+                popoverInstance = new bootstrap.Popover(chatIcon, {
+                    trigger: 'manual',
+                    html: true,
+                    content: content
+                });
+
+                // Show the updated popover
+                list.push(popoverInstance);
+                popoverInstance.show();
+
+            };
+
+            // Stream content into the popover
+            let messages = "Hello! How can I assist you today? ";
+            let index = 0;
+
+            const streamContent = () => {
+                if (index < messages.length && stream) {
+                    updatePopoverContent(messages.substring(0, index)); // Update popover content
+                    index++;
+                    setTimeout(streamContent, 50); // Delay between each update
+                } else {
+                    // Hide the popover after all messages are shown
+                    setTimeout(() => disposeAllPopovers(), 3000);
+   
+                }
+            };
+
+            // Start the content streaming on page load
+            setTimeout(() =>streamContent(),2000);
+        });
+
 
         function addMessage(sender, message) {
             const messageElement = document.createElement('div'); 
             messageElement.style.fontSize = '14px';
             messageElement.style.color= "black";
             messageElement.className=".stream-content"
-            messageElement.textContent = `${sender}: ${message}`;
+            // messageElement.textContent = `${sender}: ${message}`;
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
             chatBox.appendChild(messageElement);
             chatBox.appendChild(document.createElement('br'));
             chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll

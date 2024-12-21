@@ -28,6 +28,18 @@ def about():
 def projects():
     return render_template('projects.html')
 
+@app.route('/skills')
+def skills():
+    return render_template('skills.html')
+
+@app.route('/pubs')
+def pubs():
+    return render_template('publications.html')
+
+@app.route('/certs')
+def certs():
+    return render_template('certs.html')
+
 @app.route('/resume')
 def resume():
     return render_template('resume.html')
@@ -36,7 +48,6 @@ def resume():
 def get_response():
     user_input = request.json.get("message")
     response = chatbot.get_chat(user_input)
-    print(response)
     return jsonify({"response": response})
 
 if __name__ == '__main__':
