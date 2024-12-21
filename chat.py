@@ -78,7 +78,6 @@ class chat_bot():
         # formatted_response = re.sub(r'\*(.*?)\*', r'<i>\1</i>', formatted_response)  # Italic
         # formatted_response = formatted_response.replace("\n", "<br>")  # Line breaks
         formatted_response = markdown.markdown(response)
-        print(formatted_response)
         return formatted_response
 
     def get_chat(self, user_prompt:str):
